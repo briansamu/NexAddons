@@ -3,14 +3,14 @@
   "id": "nexaddons",
   "version": "${version}",
   "name": "NexAddons",
-  "description": "A modern Fabric client mod starter for Hypixel SkyBlock quality-of-life features.",
+  "description": "A Skyblock Mod by SunexMC",
   "authors": [
     "NexAddons contributors"
   ],
   "contact": {
-    "homepage": "https://github.com/YOUR_USERNAME/NexAddons",
-    "sources": "https://github.com/YOUR_USERNAME/NexAddons",
-    "issues": "https://github.com/YOUR_USERNAME/NexAddons/issues"
+    "homepage": "https://github.com/briansamu/NexAddons",
+    "sources": "https://github.com/briansamu/NexAddons",
+    "issues": "https://github.com/briansamu/NexAddons/issues"
   },
   "license": "LGPL-2.1-only",
   "icon": "assets/nexaddons/icon.png",
@@ -35,8 +35,8 @@
   "custom": {
     "modmenu": {
       "links": {
-        "Source": "https://github.com/YOUR_USERNAME/NexAddons",
-        "Issues": "https://github.com/YOUR_USERNAME/NexAddons/issues"
+        "Source": "https://github.com/briansamu/NexAddons",
+        "Issues": "https://github.com/briansamu/NexAddons/issues"
       }
     }
   }
