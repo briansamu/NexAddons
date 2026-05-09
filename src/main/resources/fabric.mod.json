@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "nexaddons",
+  "version": "${version}",
+  "name": "NexAddons",
+  "description": "A modern Fabric client mod starter for Hypixel SkyBlock quality-of-life features.",
+  "authors": [
+    "NexAddons contributors"
+  ],
+  "contact": {
+    "homepage": "https://github.com/YOUR_USERNAME/NexAddons",
+    "sources": "https://github.com/YOUR_USERNAME/NexAddons",
+    "issues": "https://github.com/YOUR_USERNAME/NexAddons/issues"
+  },
+  "license": "LGPL-2.1-only",
+  "icon": "assets/nexaddons/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "dev.nexaddons.NexAddons"
+      }
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader}",
+    "fabric-language-kotlin": ">=${fabric_language_kotlin}",
+    "fabric-api": ">=${fabric_api}",
+    "minecraft": "${minecraft}"
+  },
+  "suggests": {
+    "modmenu": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "Source": "https://github.com/YOUR_USERNAME/NexAddons",
+        "Issues": "https://github.com/YOUR_USERNAME/NexAddons/issues"
+      }
+    }
+  }
+}

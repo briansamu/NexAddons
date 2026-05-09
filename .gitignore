@@ -1,0 +1,17 @@
+.gradle/
+.kotlin/
+build/
+out/
+run/
+
+*.class
+*.log
+*.iml
+
+.idea/
+.vscode/
+
+crash-reports/
+logs/
+
+!gradle/wrapper/gradle-wrapper.jar

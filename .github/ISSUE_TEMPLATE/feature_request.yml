@@ -1,0 +1,27 @@
+name: Feature Request
+description: Suggest a Hypixel SkyBlock quality-of-life feature.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What SkyBlock workflow would this improve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe the feature and any UI you expect.
+    validations:
+      required: true
+  - type: checkboxes
+    id: compliance
+    attributes:
+      label: Safety
+      options:
+        - label: This does not automate gameplay or perform actions for the player.
+          required: true
