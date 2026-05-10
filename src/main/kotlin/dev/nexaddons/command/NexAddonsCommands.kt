@@ -2,6 +2,7 @@ package dev.nexaddons.command
 
 import com.mojang.brigadier.Command
 import com.mojang.brigadier.CommandDispatcher
+import dev.nexaddons.config.ConfigGuiManager
 import dev.nexaddons.config.ConfigManager
 import dev.nexaddons.text.NexAddonsText
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal
@@ -18,9 +19,27 @@ object NexAddonsCommands {
     private fun registerRoot(dispatcher: CommandDispatcher<FabricClientCommandSource>) {
         val root = dispatcher.register(
             literal("nexaddons")
-                .executes { context ->
-                    sendStatus(context.source)
+                .executes {
+                    openConfig()
                 }
+                .then(
+                    literal("config")
+                        .executes {
+                            openConfig()
+                        },
+                )
+                .then(
+                    literal("gui")
+                        .executes {
+                            openConfig()
+                        },
+                )
+                .then(
+                    literal("status")
+                        .executes { context ->
+                            sendStatus(context.source)
+                        },
+                )
                 .then(
                     literal("toggle")
                         .executes { context ->
@@ -46,6 +65,11 @@ object NexAddonsCommands {
         )
 
         dispatcher.register(literal("na").redirect(root))
+    }
+
+    private fun openConfig(): Int {
+        ConfigGuiManager.openConfigGui()
+        return Command.SINGLE_SUCCESS
     }
 
     private fun sendStatus(source: FabricClientCommandSource): Int {

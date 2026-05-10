@@ -23,6 +23,7 @@ base {
 repositories {
     mavenCentral()
     maven("https://maven.fabricmc.net/")
+    maven("https://maven.notenoughupdates.org/releases")
 }
 
 dependencies {
@@ -32,6 +33,12 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
     modImplementation("net.fabricmc.fabric-api:fabric-api:$fabricApiVersion")
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricLanguageKotlinVersion")
+
+    modImplementation("org.notenoughupdates.moulconfig:modern-$minecraftVersion:4.6.0") {
+        exclude("org.jetbrains.kotlin")
+        exclude("org.jetbrains.kotlinx")
+    }
+    include("org.notenoughupdates.moulconfig:modern-$minecraftVersion:4.6.0")
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.11.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
