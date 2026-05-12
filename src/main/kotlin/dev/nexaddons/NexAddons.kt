@@ -3,6 +3,7 @@ package dev.nexaddons
 import dev.nexaddons.command.NexAddonsCommands
 import dev.nexaddons.config.ConfigManager
 import dev.nexaddons.skyblock.SkyBlockContext
+import dev.nexaddons.update.UpdateManager
 import net.fabricmc.api.ClientModInitializer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -16,6 +17,7 @@ object NexAddons : ClientModInitializer {
     override fun onInitializeClient() {
         ConfigManager.config
         NexAddonsCommands.register()
+        UpdateManager.register()
         skyBlockContext.register()
 
         LOGGER.info("NexAddons initialized")

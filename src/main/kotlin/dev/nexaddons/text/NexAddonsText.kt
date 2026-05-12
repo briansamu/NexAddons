@@ -8,6 +8,8 @@ object NexAddonsText {
 
     fun success(message: String): Text = prefixed(message, Formatting.GREEN)
 
+    fun error(message: String): Text = prefixed(message, Formatting.RED)
+
     private fun prefixed(message: String, formatting: Formatting): Text {
         return Text.literal("[NexAddons] ")
             .formatted(Formatting.AQUA)

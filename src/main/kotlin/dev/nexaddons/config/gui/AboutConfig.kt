@@ -1,24 +1,32 @@
 package dev.nexaddons.config.gui
 
 import com.google.gson.annotations.Expose
+import dev.nexaddons.update.ConfigVersionDisplay
 import io.github.notenoughupdates.moulconfig.annotations.Accordion
 import io.github.notenoughupdates.moulconfig.annotations.ConfigEditorButton
+import io.github.notenoughupdates.moulconfig.annotations.ConfigEditorBoolean
 import io.github.notenoughupdates.moulconfig.annotations.ConfigEditorDropdown
-import io.github.notenoughupdates.moulconfig.annotations.ConfigEditorInfoText
 import io.github.notenoughupdates.moulconfig.annotations.ConfigOption
+import io.github.notenoughupdates.moulconfig.annotations.SearchTag
 import net.minecraft.util.Util
 import java.net.URI
 
 class AboutConfig {
     @ConfigOption(name = "Current Version", desc = "This is the NexAddons version you are currently running.")
-    @ConfigEditorInfoText(infoTitle = "NexAddons")
+    @ConfigVersionDisplay
+    @SearchTag("check download update release changelog")
     @Transient
-    var currentVersionLabel: String = "dev"
+    var currentVersion: Unit? = null
 
     @Expose
     @ConfigOption(name = "Update Stream", desc = "How frequently you want updates for NexAddons.")
     @ConfigEditorDropdown
     var updateStream: UpdateStream = UpdateStream.RELEASES
+
+    @Expose
+    @ConfigOption(name = "Check on Startup", desc = "Checks GitHub once after Minecraft starts and reports when a newer NexAddons jar is available.")
+    @ConfigEditorBoolean
+    var checkForUpdatesOnStartup: Boolean = true
 
     @Expose
     @ConfigOption(name = "Used Software", desc = "Information about used software and licenses.")

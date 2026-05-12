@@ -1,6 +1,8 @@
 package dev.nexaddons.config
 
 import dev.nexaddons.config.gui.NexAddonsMoulConfig
+import dev.nexaddons.update.ConfigVersionDisplay
+import dev.nexaddons.update.GuiOptionEditorUpdateCheck
 import io.github.notenoughupdates.moulconfig.gui.GuiContext
 import io.github.notenoughupdates.moulconfig.gui.GuiElementComponent
 import io.github.notenoughupdates.moulconfig.gui.MoulConfigEditor
@@ -37,6 +39,9 @@ object ConfigGuiManager {
 
     private fun createEditor(): MoulConfigEditor<NexAddonsMoulConfig> {
         val processor = MoulConfigProcessor.withDefaults(moulConfig)
+        processor.registerConfigEditor(ConfigVersionDisplay::class.java) { option, _ ->
+            GuiOptionEditorUpdateCheck(option)
+        }
         ConfigProcessorDriver(processor).apply {
             warnForPrivateFields = false
             processConfig(moulConfig)

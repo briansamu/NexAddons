@@ -21,13 +21,16 @@ class NexAddonsMoulConfig : Config() {
         val storedConfig = ConfigManager.config
         general.enabled = storedConfig.enabled
         general.showJoinMessage = storedConfig.showJoinMessage
-        about.currentVersionLabel = version
+        about.updateStream = storedConfig.updateStream
+        about.checkForUpdatesOnStartup = storedConfig.checkForUpdatesOnStartup
     }
 
     override fun saveNow() {
         val storedConfig = ConfigManager.config
         storedConfig.enabled = general.enabled
         storedConfig.showJoinMessage = general.showJoinMessage
+        storedConfig.updateStream = about.updateStream
+        storedConfig.checkForUpdatesOnStartup = about.checkForUpdatesOnStartup
         ConfigManager.save()
     }
 

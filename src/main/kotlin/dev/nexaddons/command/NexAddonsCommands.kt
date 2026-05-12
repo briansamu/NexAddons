@@ -5,6 +5,7 @@ import com.mojang.brigadier.CommandDispatcher
 import dev.nexaddons.config.ConfigGuiManager
 import dev.nexaddons.config.ConfigManager
 import dev.nexaddons.text.NexAddonsText
+import dev.nexaddons.update.UpdateManager
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource
@@ -41,6 +42,27 @@ object NexAddonsCommands {
                         },
                 )
                 .then(
+                    literal("update")
+                        .executes {
+                            UpdateManager.checkForUpdates(force = true)
+                            Command.SINGLE_SUCCESS
+                        }
+                        .then(
+                            literal("check")
+                                .executes {
+                                    UpdateManager.checkForUpdates(force = true)
+                                    Command.SINGLE_SUCCESS
+                                },
+                        )
+                        .then(
+                            literal("download")
+                                .executes {
+                                    UpdateManager.downloadLatestUpdate()
+                                    Command.SINGLE_SUCCESS
+                                },
+                        ),
+                )
+                .then(
                     literal("toggle")
                         .executes { context ->
                             val config = ConfigManager.config
@@ -65,6 +87,20 @@ object NexAddonsCommands {
         )
 
         dispatcher.register(literal("na").redirect(root))
+        dispatcher.register(
+            literal("naupdate")
+                .executes {
+                    UpdateManager.checkForUpdates(force = true)
+                    Command.SINGLE_SUCCESS
+                }
+                .then(
+                    literal("download")
+                        .executes {
+                            UpdateManager.downloadLatestUpdate()
+                            Command.SINGLE_SUCCESS
+                        },
+                ),
+        )
     }
 
     private fun openConfig(): Int {
